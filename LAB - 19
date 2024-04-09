@@ -1,0 +1,45 @@
+LAB-19
+
+
+Title: Simplified EC2 Management with Systems Manager: A Step-by-Step Guide
+
+In today's cloud-based infrastructure, managing EC2 instances efficiently is crucial for seamless operations. AWS Systems Manager offers a powerful solution that streamlines EC2 management tasks, eliminates the need for SSH access, and provides comprehensive session logs. In this tutorial, we'll walk you through the process of setting up EC2 instances to be managed via Systems Manager, highlighting its benefits and demonstrating how to connect to instances effortlessly.
+
+Benefits of Systems Manager:
+Centralized Management: Systems Manager provides a centralized platform to view and manage all your AWS resources, including EC2 instances.
+
+Session Logging: Every session initiated through Systems Manager is logged, offering a detailed audit trail for security and compliance purposes.
+
+No Key Pair Distribution: Unlike traditional SSH access, Systems Manager eliminates the need to distribute and manage SSH key pairs, simplifying access control.
+
+Step 1: Create a Role
+
+First, we need to create a role that allows EC2 instances to use Systems Manager:
+
+Navigate to IAM in the AWS Management Console.
+Go to Roles and click on "Create Role".
+Select "AWS service" as the trusted entity and EC2 as the use case.
+Attach the AmazonSSMFullAccess policy.
+Proceed to review, naming the role (e.g., EC2RoleForSystemsManager) and adding a description.
+Save the role.
+
+Step 2: Launch Instance
+
+Launch an EC2 instance with the following steps:
+
+Choose the Amazon Linux 2 AMI, which comes pre-installed with the SSM agent.
+In the Configure Instance step, select the IAM role (EC2RoleForSystemsManager) created in Step 1.
+This grants the instance the necessary permissions to utilize Systems Manager.
+SSH access doesn't need to be enabled.
+Test and Validation
+To validate the setup and connect to the EC2 instance via Systems Manager:
+
+Go to Systems Manager in the AWS Management Console.
+Navigate to Managed Instances.
+Select your EC2 instance.
+From the Actions drop-down menu, choose "Start session".
+This opens a session using Systems Manager, without requiring SSH access.
+Execute commands and perform tasks directly on the instance through the Systems Manager interface.
+Once done, terminate the session.
+Conclusion
+By following these steps, you've configured your EC2 instances to be managed seamlessly through Systems Manager. This approach not only simplifies access control but also enhances security by providing detailed session logs. With Systems Manager, managing your EC2 infrastructure becomes more efficient, allowing you to focus on your core business operations.
